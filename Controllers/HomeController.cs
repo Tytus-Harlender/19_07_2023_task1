@@ -2,7 +2,6 @@
 using _19_07_2023_task1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Net;
 
 namespace _19_07_2023_task1.Controllers
 {
@@ -40,11 +39,8 @@ namespace _19_07_2023_task1.Controllers
 				var currentDate = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 _httpClient.BaseAddress = new Uri(_baseUrl);
 				_httpClient.DefaultRequestHeaders.Clear();
-				//var res = await _httpClient.GetAsync("https://catfact.ninja/fact");
-				var sth = await _httpClient.GetAsync("https://wl-api.mf.gov.pl/api/search/nip/8971829834?date=2023-07-19");
-                var response1 = await _httpClient.GetAsync($"{_baseUrl}{model.Nip}?date={currentDate}");
 				var response2 = await _httpClient.GetFromJsonAsync<Root>($"{_baseUrl}{model.Nip}?date={currentDate}");
-				return View(response2);
+				return View();
 			}
 			return View();
 		}
