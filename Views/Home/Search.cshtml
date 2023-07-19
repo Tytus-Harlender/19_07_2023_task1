@@ -1,0 +1,18 @@
+﻿@model SearchViewModel
+@{
+    ViewData["Title"] = "Wyszukiwarka";
+}
+<div>
+    <p>Witamy w wyszukiwarce!</p>
+</div>
+<div class="text-center">
+    <h1 class="display-4">Witam</h1>
+    <p>Proszę podać numer identyfikacji podatkowej pracownika (NIP):</p>
+    <form method="Post">
+        <label asp-for="Nip"></label>
+        <input type="text" asp-for="Nip"></input>
+        <input type="submit" value="Wyślij zapytanie" />
+    </form>    
+    <p>Wynik wyszukiwania:</p>
+    <output typeof="text"></output>
+</div>
