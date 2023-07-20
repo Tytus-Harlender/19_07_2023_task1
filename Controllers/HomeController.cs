@@ -2,6 +2,7 @@
 using _19_07_2023_task1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace _19_07_2023_task1.Controllers
 {
@@ -27,8 +28,16 @@ namespace _19_07_2023_task1.Controllers
         [HttpGet]
         public IActionResult Search()
         {
+            var model = new SearchViewModel();
+            model.Root = new Root();
+            model.Root.result = new Result();
+            model.Root.result.subject = new Subject();
+            model.Root.result.subject.workingAddress = string.Empty;
+            model.Root.result.subject.name = string.Empty;
+            model.Root.result.subject.krs = string.Empty;
+            model.Root.result.subject.residenceAddress = string.Empty;
 
-            return View();
+            return View(model);
         }
 
         [HttpPost]
@@ -39,8 +48,8 @@ namespace _19_07_2023_task1.Controllers
                 var currentDate = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 _httpClient.BaseAddress = new Uri(_baseUrl);
                 _httpClient.DefaultRequestHeaders.Clear();
-                var response2 = await _httpClient.GetFromJsonAsync<Root>($"{_baseUrl}{model.Nip}?date={currentDate}");
-                return View();
+                model.Root = await _httpClient.GetFromJsonAsync<Root>($"{_baseUrl}{model.Nip}?date={currentDate}");
+                return View(model);
             }
             return View();
         }

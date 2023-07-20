@@ -14,5 +14,19 @@
         <input type="submit" value="Wyślij zapytanie" />
     </form>    
     <p>Wynik wyszukiwania:</p>
+    <div>
+        <label>Adres działalności</label>
+        @Model.Root.result.subject.workingAddress
+        <br />
+        <label>Nazwa</label>
+        @Model.Root.result.subject.name
+        <br />
+        <label>KRS</label>
+        @Model.Root.result.subject.krs
+        <br />
+        <label>Adres zamieszkania</label>
+        @Model.Root.result.subject.residenceAddress
+        <br />
+    </div>
     <output typeof="text"></output>
 </div>
