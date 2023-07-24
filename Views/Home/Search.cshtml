@@ -14,7 +14,9 @@
         <input type="submit" value="Wyślij zapytanie" />
     </form>    
     <p>Wynik wyszukiwania:</p>
-    <div>
+    @if(@Model != null)
+    {
+        <div>
         <label>Adres działalności</label>
         @Model.Root.result.subject.workingAddress
         <br />
@@ -28,5 +30,6 @@
         @Model.Root.result.subject.residenceAddress
         <br />
     </div>
+    }
     <output typeof="text"></output>
 </div>

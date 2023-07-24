@@ -28,16 +28,7 @@ namespace _19_07_2023_task1.Controllers
         [HttpGet]
         public IActionResult Search()
         {
-            var model = new SearchViewModel();
-            model.Root = new Root();
-            model.Root.result = new Result();
-            model.Root.result.subject = new Subject();
-            model.Root.result.subject.workingAddress = string.Empty;
-            model.Root.result.subject.name = string.Empty;
-            model.Root.result.subject.krs = string.Empty;
-            model.Root.result.subject.residenceAddress = string.Empty;
-
-            return View(model);
+            return View();
         }
 
         [HttpPost]
