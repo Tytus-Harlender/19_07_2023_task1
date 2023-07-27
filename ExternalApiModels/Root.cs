@@ -2,6 +2,6 @@
 {
     public class Root
     {
-        public Result? result { get; set; }
+        public Result? Result { get; set; }
     }
 }

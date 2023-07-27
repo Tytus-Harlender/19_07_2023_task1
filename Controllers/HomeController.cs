@@ -1,4 +1,5 @@
-﻿using _19_07_2023_task1.Models;
+﻿using _19_07_2023_task1.Interfaces;
+using _19_07_2023_task1.Models;
 using _19_07_2023_task1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -9,14 +10,16 @@ namespace _19_07_2023_task1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ITaxSubjectsApiCaller _subjectApiCaller;
 
-        private readonly string _baseUrl = "https://wl-api.mf.gov.pl/api/search/nip/";
+        private readonly string _baseUrl = "https://wl-test.mf.gov.pl/api/search/nip/";
 
         private static HttpClient _httpClient = new HttpClient();
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ITaxSubjectsApiCaller subjectsApiCaller)
         {
             _logger = logger;
+            _subjectApiCaller = subjectsApiCaller;
         }
 
         public IActionResult Index()
@@ -32,14 +35,16 @@ namespace _19_07_2023_task1.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Search(SearchViewModel model)
+        public IActionResult Search(SearchViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var currentDate = DateTime.Now.Date.ToString("yyyy-MM-dd");
-                _httpClient.BaseAddress = new Uri(_baseUrl);
-                _httpClient.DefaultRequestHeaders.Clear();
-                model.Root = await _httpClient.GetFromJsonAsync<Root>($"{_baseUrl}{model.Nip}?date={currentDate}");
+                model = _subjectApiCaller.GetTaxSubjectByTINAsync(model).Result;
+
+				//var currentDate = DateTime.Now.Date.ToString("yyyy-MM-dd");
+    //            _httpClient.BaseAddress = new Uri(_baseUrl);
+    //            _httpClient.DefaultRequestHeaders.Clear();
+    //            model.Root = await _httpClient.GetFromJsonAsync<Root>($"{_baseUrl}{model.Nip}?date={currentDate}");
                 return View(model);
             }
             return View();
