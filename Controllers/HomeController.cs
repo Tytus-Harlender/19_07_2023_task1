@@ -1,24 +1,16 @@
 ﻿using _19_07_2023_task1.Interfaces;
-using _19_07_2023_task1.Models;
 using _19_07_2023_task1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Reflection;
 
 namespace _19_07_2023_task1.Controllers
 {
-    public class HomeController : Controller
+	public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly ITaxSubjectsApiCaller _subjectApiCaller;
 
-        private readonly string _baseUrl = "https://wl-test.mf.gov.pl/api/search/nip/";
-
-        private static HttpClient _httpClient = new HttpClient();
-
-        public HomeController(ILogger<HomeController> logger, ITaxSubjectsApiCaller subjectsApiCaller)
+        public HomeController(ITaxSubjectsApiCaller subjectsApiCaller)
         {
-            _logger = logger;
             _subjectApiCaller = subjectsApiCaller;
         }
 
