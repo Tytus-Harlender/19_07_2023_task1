@@ -41,10 +41,6 @@ namespace _19_07_2023_task1.Controllers
             {
                 model = _subjectApiCaller.GetTaxSubjectByTINAsync(model).Result;
 
-				//var currentDate = DateTime.Now.Date.ToString("yyyy-MM-dd");
-    //            _httpClient.BaseAddress = new Uri(_baseUrl);
-    //            _httpClient.DefaultRequestHeaders.Clear();
-    //            model.Root = await _httpClient.GetFromJsonAsync<Root>($"{_baseUrl}{model.Nip}?date={currentDate}");
                 return View(model);
             }
             return View();
