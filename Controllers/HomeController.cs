@@ -1,11 +1,11 @@
-﻿using _19_07_2023_task1.Interfaces;
+﻿using _19_07_2023_task1.Services.Interfaces;
 using _19_07_2023_task1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace _19_07_2023_task1.Controllers
 {
-	public class HomeController : Controller
+    public class HomeController : Controller
     {
         private readonly ITaxSubjectsApiCaller _subjectApiCaller;
 

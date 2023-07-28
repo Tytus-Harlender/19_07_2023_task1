@@ -1,10 +1,10 @@
-﻿using _19_07_2023_task1.Interfaces;
-using _19_07_2023_task1.Models;
+﻿using _19_07_2023_task1.Models;
+using _19_07_2023_task1.Services.Interfaces;
 using _19_07_2023_task1.ViewModels;
 
 namespace _19_07_2023_task1.Services
 {
-	public class TaxSubjectApiCaller : ITaxSubjectsApiCaller
+    public class TaxSubjectApiCaller : ITaxSubjectsApiCaller
 	{
 		private static HttpClient _httpClient = new HttpClient();
 

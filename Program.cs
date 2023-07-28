@@ -1,6 +1,6 @@
 using _19_07_2023_task1.Data;
-using _19_07_2023_task1.Interfaces;
 using _19_07_2023_task1.Services;
+using _19_07_2023_task1.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
