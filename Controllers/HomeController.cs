@@ -11,7 +11,7 @@ namespace _19_07_2023_task1.Controllers
 		private readonly ITaxSubjectsApiCaller _subjectApiCaller;
 		private readonly ITaxSubjectDbService _taxSubjectDbService;
 
-		public HomeController(ILogger logger, ITaxSubjectsApiCaller subjectsApiCaller, ITaxSubjectDbService taxSubjectDbService)
+		public HomeController(ILogger<HomeController> logger, ITaxSubjectsApiCaller subjectsApiCaller, ITaxSubjectDbService taxSubjectDbService)
         {
 			_logger = logger;
 			_subjectApiCaller = subjectsApiCaller;

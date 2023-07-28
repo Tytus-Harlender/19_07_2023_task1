@@ -1,5 +1,5 @@
-﻿using _19_07_2023_task1.Data.Repositories.Interfaces;
-using _19_07_2023_task1.Models;
+﻿using _19_07_2023_task1.Data.Entities;
+using _19_07_2023_task1.Data.Repositories.Interfaces;
 
 namespace _19_07_2023_task1.Data.Repositories
 {
@@ -8,12 +8,12 @@ namespace _19_07_2023_task1.Data.Repositories
 		private readonly ILogger _logger;
 		private readonly TaxSubjectsDbContext _taxSubjectsDbContext;
 
-		public TaxDataSearchRepository(ILogger logger, TaxSubjectsDbContext taxSubjectsDbContext)
+		public TaxDataSearchRepository(ILogger<TaxDataSearchRepository> logger, TaxSubjectsDbContext taxSubjectsDbContext)
         {
 			_logger = logger;
 			_taxSubjectsDbContext = taxSubjectsDbContext;
 		}
-        public async void SaveTaxSubjectData(ReceivedSubject data)
+        public async void SaveTaxSubjectData(TaxSubject data)
 		{
 			try
 			{
