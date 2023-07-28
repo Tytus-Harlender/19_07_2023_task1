@@ -19,7 +19,7 @@ namespace _19_07_2023_task1.Data
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			base.OnConfiguring(optionsBuilder);
-			optionsBuilder.UseSqlServer(_configuration["ConnectionStrings:DutchContextDb"]);
+			optionsBuilder.UseSqlServer(_configuration["ConnectionStrings:TaxSubjectsDbContext"]);
 		}
 	}
 }

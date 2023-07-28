@@ -20,9 +20,9 @@
 		public string? RemovalDate { get; set; }
 		public bool? HasVirtualAccounts { get; set; }
 
-		public Account? Account { get; set; }
-		public Worker? Representative { get; set; }
-		public Worker? AuthorizedClerk { get; set; }
-		public Worker? Partner { get; set; }
+		public ICollection<Account>? Account { get; set; }
+        //public Guid WorkerId { get; set; }
+        //public Worker? Worker { get; set; }
+		public virtual ICollection<Worker>? Workers { get; set; }
 	}
 }

@@ -7,7 +7,9 @@
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Nip { get; set; }
-		public Guid TaxSubjectId { get; set; }
-		public TaxSubject? TaxSubject { get; set; }
+		public string? WorkerRole { get; set; }
+		//public Guid TaxSubjectId { get; set; }
+		//public TaxSubject? TaxSubject { get; set; }
+		public virtual ICollection<TaxSubject>? TaxSubjects { get; set; }
 	}
 }
