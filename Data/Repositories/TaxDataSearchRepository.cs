@@ -1,5 +1,5 @@
-﻿using _19_07_2023_task1.Data.Entities;
-using _19_07_2023_task1.Data.Repositories.Interfaces;
+﻿using _19_07_2023_task1.Data.Repositories.Interfaces;
+using _19_07_2023_task1.Models;
 
 namespace _19_07_2023_task1.Data.Repositories
 {
@@ -13,7 +13,7 @@ namespace _19_07_2023_task1.Data.Repositories
 			_logger = logger;
 			_taxSubjectsDbContext = taxSubjectsDbContext;
 		}
-        public async void SaveTaxSubjectData(TaxSubject data)
+        public async void SaveTaxSubjectData(ReceivedSubject data)
 		{
 			try
 			{

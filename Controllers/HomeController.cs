@@ -35,6 +35,7 @@ namespace _19_07_2023_task1.Controllers
         {
             if (ModelState.IsValid)
             {
+                var response = _subjectApiCaller.GetTaxSubjectByTINAsync(model);
                 model = _subjectApiCaller.GetTaxSubjectByTINAsync(model).Result;
                 try
                 {
@@ -43,7 +44,6 @@ namespace _19_07_2023_task1.Controllers
                 catch (Exception ex) 
                 {
                     _logger.LogError(ex.Message);
-                    throw;
 				}
 
 				return View(model);
