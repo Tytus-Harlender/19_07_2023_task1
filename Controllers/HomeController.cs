@@ -7,12 +7,16 @@ namespace _19_07_2023_task1.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ITaxSubjectsApiCaller _subjectApiCaller;
+		private readonly ILogger _logger;
+		private readonly ITaxSubjectsApiCaller _subjectApiCaller;
+		private readonly ITaxSubjectDbService _taxSubjectDbService;
 
-        public HomeController(ITaxSubjectsApiCaller subjectsApiCaller)
+		public HomeController(ILogger logger, ITaxSubjectsApiCaller subjectsApiCaller, ITaxSubjectDbService taxSubjectDbService)
         {
-            _subjectApiCaller = subjectsApiCaller;
-        }
+			_logger = logger;
+			_subjectApiCaller = subjectsApiCaller;
+			_taxSubjectDbService = taxSubjectDbService;
+		}
 
         public IActionResult Index()
         {
@@ -32,8 +36,17 @@ namespace _19_07_2023_task1.Controllers
             if (ModelState.IsValid)
             {
                 model = _subjectApiCaller.GetTaxSubjectByTINAsync(model).Result;
+                try
+                {
+					_taxSubjectDbService.SaveReceivedTaxSubjectData(model.Root.Result.Subject);
+				}
+                catch (Exception ex) 
+                {
+                    _logger.LogError(ex.Message);
+                    throw;
+				}
 
-                return View(model);
+				return View(model);
             }
             return View();
         }

@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ITaxSubjectsApiCaller,TaxSubjectApiCaller>();
 builder.Services.AddDbContext<TaxSubjectsDbContext>();
+builder.Services.AddScoped<ITaxSubjectDbService, TaxSubjectDbService>();
 
 var app = builder.Build();
 
