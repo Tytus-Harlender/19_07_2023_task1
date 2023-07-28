@@ -2,7 +2,7 @@
 {
     public class Result
     {
-        public TaxSubject? Subject { get; set; }
+        public ReceivedSubject? Subject { get; set; }
         public string? RequestId { get; set; }
         public string? RequestDateTime { get; set; }
     }

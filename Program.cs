@@ -1,3 +1,4 @@
+using _19_07_2023_task1.Data;
 using _19_07_2023_task1.Interfaces;
 using _19_07_2023_task1.Services;
 
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ITaxSubjectsApiCaller,TaxSubjectApiCaller>();
+builder.Services.AddDbContext<TaxSubjectsDbContext>();
 
 var app = builder.Build();
 

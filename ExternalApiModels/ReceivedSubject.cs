@@ -1,6 +1,6 @@
 ﻿namespace _19_07_2023_task1.Models
 {
-    public class TaxSubject
+    public class ReceivedSubject
     {
         public string? Name { get; set; }
         public string? Nip { get; set; }
