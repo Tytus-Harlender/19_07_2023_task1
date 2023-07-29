@@ -2,6 +2,7 @@
 using _19_07_2023_task1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Text.Json.Nodes;
 
 namespace _19_07_2023_task1.Controllers
 {
@@ -35,16 +36,15 @@ namespace _19_07_2023_task1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = _subjectApiCaller.GetTaxSubjectByTINAsync(model);
                 model = _subjectApiCaller.GetTaxSubjectByTINAsync(model).Result;
-                try
-                {
-					_taxSubjectDbService.SaveReceivedTaxSubjectData(model.Root.Result.Subject);
-				}
-                catch (Exception ex) 
-                {
-                    _logger.LogError(ex.Message);
-				}
+    //            try
+    //            {
+				//	_taxSubjectDbService.SaveReceivedTaxSubjectData(model.Root.Result.Subject);
+				//}
+    //            catch (Exception ex) 
+    //            {
+    //                _logger.LogError(ex.Message);
+				//}
 
 				return View(model);
             }

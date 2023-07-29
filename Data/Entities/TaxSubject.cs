@@ -21,8 +21,6 @@
 		public bool? HasVirtualAccounts { get; set; }
 
 		public ICollection<Account>? Account { get; set; }
-        //public Guid WorkerId { get; set; }
-        //public Worker? Worker { get; set; }
 		public virtual ICollection<Worker>? Workers { get; set; }
 	}
 }

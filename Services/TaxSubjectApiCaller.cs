@@ -10,6 +10,23 @@ namespace _19_07_2023_task1.Services
 
 		private readonly string _baseUrl = "https://wl-test.mf.gov.pl/api/search/nip/";
 
+		public async Task<string> GetStringResponseByTINAsync(SearchViewModel model)
+		{
+			try
+			{
+				var currentDate = DateTime.Now.Date.ToString("yyyy-MM-dd");
+				_httpClient.BaseAddress = new Uri(_baseUrl);
+				_httpClient.DefaultRequestHeaders.Clear();
+				var response = await _httpClient.GetStringAsync($"{_baseUrl}{model.Nip}?date={currentDate}");
+				return response;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Unhandled exception: " + ex.Message);
+			}
+			return string.Empty;
+		}
+
 		public async Task<SearchViewModel> GetTaxSubjectByTINAsync(SearchViewModel model)
 		{
 			try
