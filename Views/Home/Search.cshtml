@@ -14,7 +14,7 @@
         <input type="submit" value="Wyślij zapytanie" />
     </form>    
     <p>Wynik wyszukiwania:</p>
-    @if(@Model != null)
+    @if (@Model != null && @Model.Root != null && Model.Root.Result != null && Model.Root.Result.Subject != null)
     {
         <div>
         <label>Adres działalności</label>
@@ -29,7 +29,13 @@
         <label>Adres zamieszkania</label>
         @Model.Root.Result.Subject.ResidenceAddress
         <br />
-    </div>
+        </div>
+    }
+    else if (@Model != null && @Model.Nip != null)
+    {
+        <div>
+            <label>Niestety - nie udało się znaleźć wyników :(</label>
+        </div>
     }
     <output typeof="text"></output>
 </div>
